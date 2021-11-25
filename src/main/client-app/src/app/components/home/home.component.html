@@ -1,0 +1,46 @@
+<div class="row m-4 justify-content-between">
+    <div class="col-10 p-0">
+        <form class="form-inline" #searchProductForm=ngForm>
+            <div class="form-group ml-3 mb-2" style="width: 35%;">
+                <input type="text" class="form-control w-100" name="searchQuery" placeholder="Search cars by name" 
+                    [(ngModel)]="searchQuery"
+                >
+            </div>
+            <div class="form-group ml-3 mb-2">
+                <select class="custom-select d-block" name="filterSelector" [(ngModel)]="filterJson" #filterSelector>
+                    <option [value]="null">Filter By</option>
+                    <option [value]="filter  | json" *ngFor="let filter of filters">
+                        {{ filter.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group ml-3 mb-2">
+                <button type="submit" class="btn btn-primary" (click)="searchProducts()">
+                    Search
+                </button>
+            </div>
+            <div class="form-group ml-3 mb-2">
+                <button type="submit" class="btn btn-warning" (click)="resetSearch()">
+                    Reset
+            </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-2 p-0">
+        <form class="w-100 mr-3" #currencySelectorForm=ngForm>
+            <div class="form-group mr-3 mb-2">
+                <select class="custom-select d-block" name="currencySelector" 
+                    #currencySelector (change)="changeCurrency(currencySelector.value)"
+                >
+                    <option [ngValue]="null" disabled>Change Currency</option>
+                    <option [value]="currency.key" *ngFor="let currency of currencies | keyvalue">
+                        {{ currency.key + ' - ' + currency.value }}
+                    </option>
+                </select>
+            </div>
+        </form>
+    </div>
+</div>
+
+<app-product-card [data]="productData" [searchQuery]="query"></app-product-card>

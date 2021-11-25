@@ -1,0 +1,23 @@
+<div class="row mx-4">
+	<div class="col-auto">
+		<h6>
+			<p class="font-weight-bold">
+				Found {{ productData.length }} cars<span *ngIf="searchQuery"> with name {{ searchQuery }}</span>.
+			</p>
+		</h6>
+	</div>
+</div>
+
+<div class="row mx-4">
+	<div class="col-lg-3 col-md-4 col-sm-6 my-4" *ngFor="let product of productData">
+		<div class="card">
+			<img class="card-img-top" src="../../../assets/images/dummyImage.jpg" [alt]="product.modelName + 'Image'">
+			<div class="card-body">
+				<h5 class="card-title">{{ product.modelName }}</h5>
+				<h6 class="card-subtitle mb-2 text-muted">{{ product.price | currency: product.currencyValue }}</h6>
+				<p class="card-text">Price: {{ product.description }}</p>
+				<a href="#" class="btn btn-primary">View</a>
+			</div>
+		</div>
+	</div>
+</div>

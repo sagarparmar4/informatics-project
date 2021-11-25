@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Provide a Feedback</h2>
+        <p class="lead">
+            We love your review and feedbacks - and we're always happy to help!
+        </p>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12 order-md-1">
+            <h4 class="mb-3">Feedback form</h4>
+            <form class="needs-validation" #feedbackForm="ngForm" (ngSubmit)="submitFeedback()">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">First name</label>
+                        <input type="text" class="form-control" name="firstName" required
+                            [(ngModel)]="feedbackFormData.firstName"
+                        >
+                        <div class="invalid-feedback">
+                            Valid first name is required.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="lastName">Last name</label>
+                        <input type="text" class="form-control" name="lastName" required
+                            [(ngModel)]="feedbackFormData.lastName"
+                        >
+                        <div class="invalid-feedback">
+                            Valid last name is required.
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="mb-3">
+                    <label for="emailId">Email</label>
+                    <input type="emailId" class="form-control" name="emailId" required
+                        [(ngModel)]="feedbackFormData.emailId"
+                    >
+                    <div class="invalid-feedback">
+                        Please enter a valid email address.
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="rating">Rate our service</label>
+                        <select class="custom-select d-block w-100" name="rating" required
+                            [(ngModel)]="feedbackFormData.rating"
+                        >
+                            <option [ngValue]="null" disabled>Choose an option</option>
+                            <option [value]="value" *ngFor="let value of [1, 2, 3, 4, 5]">{{ value }}</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid rating.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="feedback">Feedback</label>
+                    <textarea type="text" class="form-control" name="feedback" required
+                        [(ngModel)]="feedbackFormData.feedback"
+                    >
+                    </textarea>
+                    <div class="invalid-feedback">
+                        Please enter your feedback.
+                    </div>
+                </div>
+                                
+                <hr class="mb-4">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!feedbackForm.form.valid">
+                    Submit Feedback
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
