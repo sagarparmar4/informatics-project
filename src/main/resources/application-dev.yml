@@ -8,6 +8,17 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: false
-    
+  mail:
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+    host: smtp.gmail.com
+    username: sagarparmar.test@gmail.com
+    password: zlpcuaqemrqwrbjr
+    port: 587
+
 cars:
   initialize-default-setup: false

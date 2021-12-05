@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { MasterService } from 'src/app/services/master.service';
-import { FILTERS } from '../../utils/constants';
+import { DEFAULT_CURRENCY, FILTERS } from '../../utils/constants';
 
 @Component({
   selector: 'app-home',
@@ -17,11 +17,11 @@ export class HomeComponent implements OnInit {
   query: string = null;
   productData: Array<any> = [];
   currencies: any = {};
-  currentCurrency: string = null;
+  currentCurrency: string = DEFAULT_CURRENCY;
   filterJson: string = null;
   filters: Array<any> = [
-    { order: FILTERS.ASC, column: 'price', name: 'Highest Price' },
-    { order: FILTERS.DESC, column: 'price', name: 'Lowest Price' },
+    { order: FILTERS.ASC, column: 'price', name: 'Lowest Price' },
+    { order: FILTERS.DESC, column: 'price', name: 'Highest Price' },
 
     { order: FILTERS.ASC, column: 'createdDate', name: 'Newly Added' },
     { order: FILTERS.DESC, column: 'createdDate', name: 'Oldest Added' },
