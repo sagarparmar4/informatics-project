@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.projects</groupId>
 	<artifactId>informatics-project</artifactId>
-	<version>0.0.1-RELEASE</version>
+	<version>0.1-RELEASE</version>
 	<packaging>war</packaging>
 	<name>informatics-project</name>
 	<description>Demo project for Informatics Module</description>
