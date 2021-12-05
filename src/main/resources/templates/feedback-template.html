@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+		<p th:text="#{greetings(${firstName}, ${lastName})}"></p>
+		<p th:text="${text}"></p>
+		<p>
+			<span th:text="#{feedbackHeading}"></span><br>
+			<span th:text="${feedbackMessage}"></span>
+		</p>
+		<br>
+		<p>--</p>
+		<p th:text="#{regards}"></p>
+		<p th:text="#{signature}"></p>
+	</body>
+</html>

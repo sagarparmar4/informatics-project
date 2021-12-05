@@ -21,7 +21,7 @@ public class Feedback extends AbstractEntity {
 	@NotNull
 	private String emailId;
 
-	@Column
+	@Column(length = 5000)
 	@NotNull
 	private String feedback;
 

@@ -13,15 +13,21 @@ public class FeedbackService {
 	@Autowired
 	FeedbackRepository feedbackRepository;
 
+	@Autowired
+	EmailService emailService;
+
 	public Feedback submitFeedback(Feedback feedback) {
 		Assert.notNull(feedback, "Empty feedback provided");
-		Assert.hasText(feedback.getFirstName(), "Empty feedback provided");
-		Assert.hasText(feedback.getLastName(), "Empty feedback provided");
-		Assert.hasText(feedback.getEmailId(), "Empty feedback provided");
-		Assert.hasText(feedback.getFeedback(), "Empty feedback provided");
-		Assert.notNull(feedback.getRating(), "Empty feedback provided");
+		Assert.hasText(feedback.getFirstName(), "First name not provided");
+		Assert.hasText(feedback.getLastName(), "Last name not provided");
+		Assert.hasText(feedback.getEmailId(), "Email id not provided");
+		Assert.hasText(feedback.getFeedback(), "Feedback not provided");
+		Assert.notNull(feedback.getRating(), "Rating not provided");
 
-		return feedbackRepository.save(feedback);
+		Feedback savedFeedback = feedbackRepository.save(feedback);
+		emailService.sendFeedbackMessage(feedback.getFirstName(), feedback.getLastName(), feedback.getEmailId(),
+				feedback.getFeedback());
+		return savedFeedback;
 	}
 
 }
